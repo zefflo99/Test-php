@@ -1,6 +1,5 @@
 <?php
 
-
 if (isset($_POST["addButton"])) {
     $newNote = htmlspecialchars($_POST["inputName"]);
 
@@ -10,10 +9,13 @@ if (isset($_POST["addButton"])) {
 
     $notes[] = $newNote;
     file_put_contents('note.json', json_encode($notes));
-    echo "Note add: " . $newNote;
+    echo "Note added: " . $newNote;
 
+} elseif (isset($_POST["deleteButton"])) {
+
+    file_put_contents('note.json', '');
+    echo "Content delete";
 }
-
 
 ?>
 
@@ -36,7 +38,18 @@ if (isset($_POST["addButton"])) {
     </label>
     <button type="submit" name="addButton">submit</button>
 
+    <button type="submit" name="deleteButton">Delete</button>
+
 </form>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
